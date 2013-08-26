@@ -25,7 +25,7 @@ group :test do
   gem "test-unit"
   gem "mocha", :require => false
   gem "factory_girl_rails"
-  gem "database_cleaner"
+  gem "database_cleaner", "= 1.0.1"
 end
 
 group :production do
