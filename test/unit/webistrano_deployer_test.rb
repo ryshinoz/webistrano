@@ -3,7 +3,7 @@ require 'test_helper'
 class Webistrano::DeployerTest < ActiveSupport::TestCase
 
   def setup
-    @project = FactoryGirl.build(:project, :template => 'pure_file')
+    @project = FactoryGirl.create(:project, :template => 'pure_file')
     @stage   = FactoryGirl.create(:stage,   :project  => @project)
     @host    = FactoryGirl.create(:host)
 
@@ -470,8 +470,6 @@ class Webistrano::DeployerTest < ActiveSupport::TestCase
 
     # set the scm_command to something bogus in order to throw an error
     stage.configuration_parameters.build(:name => 'scm_command', :value => '/tmp/foobar_scm_command').save!
-
-
 
     deployment = FactoryGirl.create(:deployment, :stage => stage, :task => 'deploy:default')
     deployer = Webistrano::Deployer.new(deployment)
